@@ -1,0 +1,20 @@
+name: build kernel
+on: [ push, pull_request, workflow_dispatch ]
+
+jobs:
+  build:
+    name: Create Release
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: "build kernel"
+        id: latest_tag
+        run: bash build.sh 
+      - name: capture build artifacts
+        uses: actions/upload-artifact@v2
+        with:
+         name: Artifacts
+         path: ./deb
