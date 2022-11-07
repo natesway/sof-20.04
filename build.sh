@@ -8,4 +8,4 @@ make oldconfig
 make testconfig
 make -j2 bindeb-pkg
 mkdir ../deb
-mv *.deb ../deb
+mv ../*.deb ../deb
